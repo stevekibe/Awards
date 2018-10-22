@@ -1,0 +1,42 @@
+{%extends 'base.html' %}
+
+{% load static %}
+
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Courgette|Lilita+One|Sigmar+One" rel="stylesheet"> 
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <br><br><br>
+    <h2>{{project.title}}</h2>
+    <br>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+        <img src="{{project.project_img.url}}">
+        <center>
+       <a href ="{{project.link}}"> <button class="btn btn-info">View site</button></a>
+        </center>
+        <hr>
+        <h3>Description</h3>
+        <p>{{project.project_detail}}</p>
+      
+     
+   <div class="panel panel-default">
+        <center>
+            <div class="panel-footer">Created by <strong>{{project.user.username}}</strong></div>
+            </center>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock%}
+
+  {% block scripts %}
+  {{block.super}}
+ 
+<script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+{% endblock%}
