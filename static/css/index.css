@@ -1,0 +1,80 @@
+img{
+    width: 100%;
+    transition: all 0.3s ease 0s;
+ 
+}
+
+.well{
+    background-color: #f6f6f6;
+    ;
+    padding: 0;
+    margin-top: 20px;
+  
+}
+
+img:hover{
+    transform: scale(1.2);
+    opacity: 0.5;
+   
+ }
+.container-fluid{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.item{
+    background-color: black;
+    overflow: hidden;
+}
+.view{
+    position: absolute;
+    top: 30%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    color: whitesmoke;
+    visibility: hidden;
+  
+}
+.item:hover  .view{
+    visibility:visible;
+}
+
+.title{
+    font-family: 'Lalezar', cursive;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.time{
+    font-family: 'Boogaloo', cursive;
+    font-size: 18px;
+    margin-left: 400px;
+    margin-top: -40px;
+}
+#me{
+    width: 50px;
+   
+}
+#me:hover{
+    opacity: 1;
+    transform: none
+}
+
+.user{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    margin-left: 10px;
+}
+a{
+    color: black
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+form{
+    width: 100px;
+}
+ul{
+   text-align: center;
+}

@@ -1,0 +1,86 @@
+#me{
+    width: 175px;
+    border-radius: 10%;
+
+}
+.jumbotron{
+    margin-top: -9px;
+    border: solid #ccc 1px;
+    background-image: url("/static/photo/bg.jpg"); 
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: rgba( 0, 0, 0 ,0.2);
+    height: 200px;
+   
+    
+}
+.contact{
+    float: left;
+}
+.reach{
+    width: 42px;
+}
+li{
+    list-style-type: none;
+    padding: 5px;
+  
+}
+.tooltiptext1{
+    visibility: hidden;
+  
+}
+li:hover .tooltiptext1{
+    visibility: visible;
+}
+.detz{
+    float: right;
+    margin-top: -80px;
+    margin-right: 480px;
+}
+.line{
+
+    height: 110px;
+    width: 5px;
+    background-color: gainsboro;
+    float: right;
+    border-radius: 20px;
+}
+.item{
+    background-color: black;
+    overflow: hidden;
+}
+#zote{
+    transition: all 0.3s ease 0s;
+ 
+}
+#zote:hover{
+    transform: scale(1.2);
+    opacity: 0.5;
+   
+ }
+ .view{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    color: whitesmoke;
+    visibility: hidden;
+  
+}
+.item:hover  .view{
+    visibility:visible;
+}
+.col-md-3{
+    margin-top: -40px;
+    text-align: center
+}
+
+figcaption{
+    font-size: 28px;
+    margin-left: 55px;
+    font-family: 'Overlock', cursive;
+}
