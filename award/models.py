@@ -25,9 +25,12 @@ class Detail(models.Model):
         self.save()
 
     @classmethod
-    def get_by_id(cls, id):
-        detail = Detail.objects.get(id=id)
+    def get_by_id(cls,user_id):
+        detail = Detail.objects.get(user_id=user_id)
         return detail
+
+    def __str__(self):
+        return self.bio
 
 class Project(models.Model):
     title = models.CharField(max_length = 100)
@@ -58,9 +61,21 @@ class Project(models.Model):
         return votes
 
     @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
+
+
+    @classmethod
     def get_project_by_id(cls,id):
+        project = Project.objects.get(pk=id)
+        return project
+
+    @classmethod
+    def get_project_by_user(cls, id):
         project = Project.objects.filter(user_id=id).all()
         return project
+
     
     def __str__(self):
         return self.project_detail

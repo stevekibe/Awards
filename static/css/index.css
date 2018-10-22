@@ -30,8 +30,8 @@ img:hover{
     top: 30%;
     left:50%;
     transform: translate(-50%, -50%);
-    font-family: 'Fredoka One', cursive;
-    font-size: 30px;
+    font-family: Tangerine,serif;
+    font-size: 50px;
     color: whitesmoke;
     visibility: hidden;
   
@@ -41,13 +41,13 @@ img:hover{
 }
 
 .title{
-    font-family: 'Lalezar', cursive;
-    font-size: 18px;
+    font-family: Tangerine,serif;
+    font-size: 35px;
     margin-left: 10px;
 }
 .time{
-    font-family: 'Boogaloo', cursive;
-    font-size: 18px;
+    font-family: Tangerine,serif;
+    font-size: 30px;
     margin-left: 400px;
     margin-top: -40px;
 }
@@ -61,8 +61,8 @@ img:hover{
 }
 
 .user{
-    font-family: 'Patrick Hand', cursive;
-    font-size: 20px;
+    font-family: Tangerine,serif ;
+    font-size: 40px;
     margin-left: 10px;
 }
 a{

@@ -13,24 +13,24 @@ from .forms import SignupForm,DetailForm,CommentsForm,ProjectForm
 @login_required(login_url='accounts/login/')
 def index(request):
     projects = Project.get_projects().order_by('-pub_date')
-    details = User.objects.all()
+    details = request.user.detail
     votes =Votes.objects.all()
     comments = Comment.objects.all()
     
-    return render(request, "index.html", {"projects":projects,"details":details,"comments":comments,"votes":votes})
+    return render(request, "index.html", {"projects":projects,"detail":details,"comments":comments,"votes":votes})
 
 
 def search_results(request):
     
-    if 'project' in request.GET and request.GET["project"]:
-        search_term = request.GET.get("project")
-        searched_projects = Project.search_by_title(search_term)
+    if 'title' in request.GET and request.GET["title"]:
+        search_term = request.GET.get("title")
+        projects = Project.search_by_title(search_term)
         message = f"{search_term}"
         
-        return render(request, 'search.html',{"message":message,"projects":searched_projects,})
+        return render(request, 'search.html',{"message":message,"projects":projects})
     else:
         message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        return render(request, 'search.html',{"message":message,})
 
 
 def new_project(request):
@@ -54,19 +54,20 @@ def vote_project(request):
 
 def detail(request, user_id):
     title = "Profile"
-    project = Project.get_post_by_id(id= user_id).order_by('pub_date')
-    details = User.objects.get(id=user_id)
+    project = Project.get_project_by_user(id=user_id).order_by('pub_date')
+    details = Detail.objects.get(user_id=user_id)
     users = User.objects.get(id=user_id)
 
-    return render(request, 'detail/detail.html',{'title':title,"images":images,"details":details,})
+    return render(request, 'detail/detail.html', locals())
 
 def edit_detail(request):
     current_user = request.user
     detail = Detail.objects.get(user= request.user)
     if request.method == 'POST':
-        form = DetailForm(request.POST, request.FILES)
+        form = DetailForm(request.POST, request.FILES,instance=detail)
         if form.is_valid():
             detail = form.save(commit=False)
+            detail.user = current_user
             detail.save()
         return redirect('index')
     else:
@@ -83,6 +84,15 @@ def add_comment(request, image_id):
             comment.project = project
             comment.save()
     return redirect('index')
+
+def view_project(request, id):
+
+    title = "View Project"
+    project = Project.get_project_by_id(id=id)
+    print(project,)
+  
+    return render(request, 'view-project.html', locals())
+
 
 def vote(request, project_id):
     current_user = request.user

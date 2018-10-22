@@ -5,7 +5,9 @@
 {% block styles%}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-
+<link rel="stylesheet" href="{% static 'css/bootsrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 <link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar|Patrick+Hand" rel="stylesheet"> 
 {% endblock %}
 
@@ -13,19 +15,50 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<div class="container-fluid">
+<div class="container-fluid" style="background-image:url(/static/img/background.png)">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/static/img/african_landscape_by_dasflon-d5l9t7c5.jpg" alt="flower" style=" width:1500px; height:600px">
+                <br>
+                <p class="view"><span>Welcome to Awwards</span></p>
+            </div>
+            <div class="item">
+                <img src="/static/img/maxresdefault.jpg" alt="dave" style=" width:1500px; height:600px">
+                <br>
+                <p class="view"><span>Welcome to Awwards</span></p>
+            </div>
+            <div class="item">
+                <img src="/static/img/images.jpeg" alt="child" style="width:1500px; height:600px">
+                <br>
+                <p class="view"><span>Welcome to Awwards</span></p>
+            </div>
+
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyiphicon-chevron-right"></span>
+            <span class="sr-only">next</span>
+        </a>
+    </div>
   {% for project in projects %}
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="well">
       <div class="item">
-        <a href="/project/{{project.id}}"><img src="{{project.project_img.url}}" class="img-responsive"><p class="view">View Project</p></a> 
+        <a href="/viewproject/{{project.id}}"><img src="{{project.project_img.url}}" class="img-responsive"><p class="view">View Project</p></a> 
       </div>
       <br>
-  <p class="title">{{pro.title}}</p>
-  {% if pro.profile.profile_pic %}
-  <a href="/user/{{project.user_id}}"><p class="user"> <img src="{{project.detail.user_image.url}}" id="me" class="img-circle"> By {{project.user.username}}</p></a>
+  <p class="title">{{project.title}}</p>
+  {% if detail.user_image %}
+  <a href="/user/{{project.user_id}}"><p class="user"> <img src="{{detail.user_image.url}}" id="me" class="img-circle"> By {{project.user.username}}</p></a>
  
    {%else%}
    <a href="/user/{{project.user_id}}"><p class="user"> <img src="/static/img/avatar.png" id="me" class="img-circle"> By {{project.user.username}}</p></a>

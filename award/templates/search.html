@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+ 
+{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -17,12 +21,13 @@
 
   </div>
    <div class="row">
-    {% for project in projects %}
-    <div class="container">
-     <ul class="list-inline">
-    <li class="list-inline-item">
-    <a href="/project/{{project.id}}"> {{project.title}} </strong></a>
-    </li>
-    {%endfor%}
+      {% if projects %}
+      {% for project in projects %}
+        <div class="col-sm-6 col-md-3">
+            <a href="/viewproject/{{project.id}}"><h1>{{project.title}}</h1></a>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
 </div>
 {%endblock%}
