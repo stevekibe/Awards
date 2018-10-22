@@ -1,2 +1,42 @@
 {% extends "base.html" %}
 {%load static%}
+{% load bootstrap3 %}
+
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<link href="https://fonts.googleapis.com/css?family=Boogaloo|Fredoka+One|Lalezar|Patrick+Hand" rel="stylesheet"> 
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  {% for project in projects %}
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="well">
+      <div class="item">
+        <a href="/project/{{project.id}}"><img src="{{project.project_img.url}}" class="img-responsive"><p class="view">View Project</p></a> 
+      </div>
+      <br>
+  <p class="title">{{pro.title}}</p>
+  {% if pro.profile.profile_pic %}
+  <a href="/user/{{project.user_id}}"><p class="user"> <img src="{{project.detail.user_image.url}}" id="me" class="img-circle"> By {{project.user.username}}</p></a>
+ 
+   {%else%}
+   <a href="/user/{{project.user_id}}"><p class="user"> <img src="/static/img/avatar.png" id="me" class="img-circle"> By {{project.user.username}}</p></a>
+    {% endif %}
+   <p class="time">{{project.pub_date}}</p>
+    <p><a href=" {% url 'vote' project_id=project.id %}" >
+    <i class="fa fa-heart-o" style="font-size:28px; color:black;" aria-hidden="true"></i></a>&nbsp;&nbsp;{{project.count_votes}}   Votes</p>
+    </div>
+  </div>
+  
+
+  {% endfor%}
+</div>
+{% endblock%}

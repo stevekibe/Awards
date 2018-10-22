@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br><br>
+  <div class="row">
+    {% if projects %}
+      <h2>Found {{ projects|length }} project(s) with that title</h2>
+    {% else %}
+      <h2> Found 0 projects for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+   <div class="row">
+    {% for project in projects %}
+    <div class="container">
+     <ul class="list-inline">
+    <li class="list-inline-item">
+    <a href="/project/{{project.id}}"> {{project.title}} </strong></a>
+    </li>
+    {%endfor%}
+</div>
+{%endblock%}

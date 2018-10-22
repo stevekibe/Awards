@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+{% load static %}
+
+
+{{block.super}}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="col-md-4" id="details">
+        {%if details.user_image%}
+        <figure>
+            <img src="{{details.user_image.url}}" id="pic">
+            <figcaption>{{details.user.username}}</figcaption>
+        </figure>
+        {%else%}
+        <figure>
+            <img src="https://cdn0.iconfinder.com/data/icons/finance-vol-2-4/48/77-512.png" alt="avatar" class="img-circle">
+            <figcaption>{{details.user.username}}</figcaption>
+        </figure>
+        {% endif %}
+    </div>
+    <blockquote>{{details.bio}}</blockquote>
+    <hr>
+    <br>
+    {% for project in projects %}
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="proj">
+            <a href="/project/{{project.id}}"><img src="{{project.post.url}}" class="img-responsive"><p>View Project</p></a>
+        </div>
+    </div>
+</div>
+{%endfor%}
+{% endblock %}

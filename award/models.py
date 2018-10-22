@@ -30,7 +30,8 @@ class Detail(models.Model):
         return detail
 
 class Project(models.Model):
-    post = models.ImageField(upload_to = 'images/', blank=True)
+    title = models.CharField(max_length = 100)
+    project_img = models.ImageField(upload_to = 'images/', blank=True)
     project_detail = HTMLField()
     link = models.URLField(max_length = 100)
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -53,8 +54,8 @@ class Project(models.Model):
 
     @property
     def count_votes(self):
-        likes = self.likes.count()
-        return likes
+        votes = self.votes.count()
+        return votes
 
     @classmethod
     def get_project_by_id(cls,id):
@@ -88,13 +89,13 @@ class Comment(models.Model):
 
 class Votes(models.Model):
     user_vote = models.ForeignKey(User, on_delete=models.CASCADE, related_name='votes')
-    voted_project =models.ForeignKey(Project, on_delete=models.CASCADE, related_name='votes')
+    voted_project =models.ForeignKey(Project, on_delete=models.CASCADE, related_name='votes',null=True)
 
     def save_like(self):
         self.save()
 
     def __str__(self):
-        return self.user_like
+        return self.user_vote
 
 
 
